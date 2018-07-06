@@ -23,8 +23,20 @@ module.exports = {
         }
 
         else if(!userposts && !search){
-            req.app.get('db').
+            req.app.get('db').retrieveNotAuthor([id])
+            .then ( posts => res.status(200).send( posts ))
         }
+
+        else if(!userposts && search){
+            req.app.get('db').retrieveSearchNotAuthor([search, id])
+            .then ( posts => res.status(200).send( posts ))
+        }
+
+        else if(userposts && !search){
+            req.app.get('db').retrieveAllPosts([userposts])
+            .then ( posts => res.status(200).send( posts ))
+        }
+
 
 
         // req.app.get('db').retrievePosts([userposts, search, id])
