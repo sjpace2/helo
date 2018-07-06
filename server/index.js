@@ -17,5 +17,6 @@ massive(CONNECTION_STRING)
     }).catch( err => console.log(err));
 
 app.post('/api/register', ctrl.register);
+app.post('api/register', ctrl.login);
 
 app.listen( PORT || 3005, ()=> console.log(`Listening on port ${PORT || 3005}`));

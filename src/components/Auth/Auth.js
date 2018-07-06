@@ -22,7 +22,19 @@ class Auth extends Component {
     })
   }
 
-  
+  registerNewUser = () => {
+    axios.post('/api/register', {
+      username: this.state.username,
+      password: this.state.password
+    }).then(this.props.history.push('/dashboard'))
+  }
+
+  loginExistingUser = () => {
+    axios.post('api/register', {
+      username: this.state.username,
+      password: this.state.password
+    }).then(this.props.history.push('/dashboard'))
+  }
 
 
 
@@ -32,8 +44,8 @@ class Auth extends Component {
           Auth
           <input onChange={ e => this.handleUsernameChange(e.target.value) } type="text"/>
           <input onChange={ e => this.hanldePasswordChange(e.target.value) } type="text"/>
-          <button>Login</button>
-          <button>Register</button>
+          <button onClick = { this.loginExistingUser }>Login</button>
+          <button onClick = { this.registerNewUser }>Register</button>
         </div>
       );
     }
