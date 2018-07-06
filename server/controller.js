@@ -20,6 +20,7 @@ module.exports = {
         if(userposts && search){
             req.app.get('db').retrievePostsSearch([search])
             .then ( post => res.status(200).send( post ))
+            
         }
 
         else if(!userposts && !search){
@@ -37,5 +38,6 @@ module.exports = {
             .then ( posts => res.status(200).send( posts ))
         }
 
-    }
+    } 
+   
 }

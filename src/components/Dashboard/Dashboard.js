@@ -25,7 +25,12 @@ class Dashboard extends Component {
   
     searchPosts = () => {
       axios.get('/api/posts', this.state.id, this.state.search, this.state.myPosts)
-      .then()
+      .then(response => {
+        console.log(response)
+        this.setState({
+          posts: response.data
+        })
+      })
     }
 
 
@@ -43,7 +48,7 @@ class Dashboard extends Component {
           My Posts
           <input type = "checkbox" name = 'myPosts' checked = { this.state.myPosts } onChange = {e=>this.handleCheckboxChange(e.target.value)} />
           
-          <button>Search</button>
+          <button onClick = {this.searchPosts} >Search</button>
           <button>Reset</button>
           
         </div>
