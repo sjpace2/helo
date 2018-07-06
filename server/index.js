@@ -16,4 +16,6 @@ massive(CONNECTION_STRING)
         console.log('DB Connected')
     }).catch( err => console.log(err));
 
+app.post('/api/register', ctrl.register);
+
 app.listen( PORT || 3005, ()=> console.log(`Listening on port ${PORT || 3005}`));
