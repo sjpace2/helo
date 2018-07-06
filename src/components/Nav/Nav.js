@@ -14,6 +14,7 @@ function Nav (props) {
             <div>
                 <h4>
                     {props.username}
+                    {props.id}
                     {props.profile_pic}
                 </h4>
             </div>
@@ -22,9 +23,11 @@ function Nav (props) {
 }
 
 function mapStateToProps (state) {
+    
     return {
         username: state.username,
-        profile_pic: state.profile_pic
+        profile_pic: state.profile_pic,
+        id: state.id
     }
 }
 
