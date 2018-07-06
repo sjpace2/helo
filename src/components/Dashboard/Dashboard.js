@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import axios from 'axios';
 
 
 class Dashboard extends Component {
@@ -23,7 +24,8 @@ class Dashboard extends Component {
     }
   
     searchPosts = () => {
-      axios.get('/api/posts/:userposts/:search/:id', this.state.id)
+      axios.get('/api/posts', this.state.id, this.state.search, this.state.myPosts)
+      .then()
     }
 
 
