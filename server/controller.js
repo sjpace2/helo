@@ -12,5 +12,22 @@ module.exports = {
         const { username, password } = req.body;
         req.app.get('db').loginUser([username, password])
         .then( existingUser => res.status(200).send(existingUser))
+    },
+
+    retrievePosts: (req, res) => {
+        const {userposts, search, id} = req.params;
+        
+        if(userposts && search){
+            req.app.get('db').retrievePostsSearch([search])
+            .then ( post => res.status(200).send( post ))
+        }
+
+        else if(!userposts && !search){
+            req.app.get('db').
+        }
+
+
+        // req.app.get('db').retrievePosts([userposts, search, id])
+        // .then ( post => res.status(200).send( post ))
     }
 }

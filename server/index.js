@@ -18,5 +18,6 @@ massive(CONNECTION_STRING)
 
 app.post('/api/register', ctrl.register);
 app.post('api/register', ctrl.login);
+app.get('/api/posts/:userposts/:search/:id', ctrl.retrievePosts);
 
 app.listen( PORT || 3005, ()=> console.log(`Listening on port ${PORT || 3005}`));
