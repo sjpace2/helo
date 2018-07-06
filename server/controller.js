@@ -15,7 +15,7 @@ module.exports = {
     },
 
     retrievePosts: (req, res) => {
-        const {userposts, search, id} = req.params;
+        const {userposts, search, id} = req.query;
         
         if(userposts && search){
             req.app.get('db').retrievePostsSearch([search])
@@ -28,18 +28,14 @@ module.exports = {
         }
 
         else if(!userposts && search){
-            req.app.get('db').retrieveSearchNotAuthor([search, id])
+            req.app.get('db').retrieveSearchNotAuthor([id, search])
             .then ( posts => res.status(200).send( posts ))
         }
 
         else if(userposts && !search){
-            req.app.get('db').retrieveAllPosts([userposts])
+            req.app.get('db').retrieveAllPosts()
             .then ( posts => res.status(200).send( posts ))
         }
 
-
-
-        // req.app.get('db').retrievePosts([userposts, search, id])
-        // .then ( post => res.status(200).send( post ))
     }
 }

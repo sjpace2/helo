@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
 
 class Dashboard extends Component {
     constructor () {
@@ -20,6 +22,11 @@ class Dashboard extends Component {
       // e === 'checkbox' ? e.checked : e.value;
     }
   
+    searchPosts = () => {
+      axios.get('/api/posts/:userposts/:search/:id', this.state.id)
+    }
+
+
     render() {
       
       let filteredPosts = this.state.posts.map((post, index)=>{
@@ -42,4 +49,11 @@ class Dashboard extends Component {
     }
   }
   
-  export default Dashboard;
+  function mapStateToProps(state){
+    return {
+      id: state.id
+    }
+  }
+
+
+  export default connect(mapStateToProps)(Dashboard);
